@@ -8,14 +8,18 @@
 
 import Foundation
 
-// MARK: - StocksData
 struct StocksData: Codable {
     let meta: Meta
     let values: [Value]
     let status: String
+    
+    enum TopKodingCase: String, CodingKey {
+        case meta
+        case values
+        case status
+    }
 }
 
-// MARK: - Meta
 struct Meta: Codable {
     let symbol, interval, currency, exchangeTimezone: String
     let exchange, type: String
@@ -27,7 +31,6 @@ struct Meta: Codable {
     }
 }
 
-// MARK: - Value
 struct Value: Codable {
     let datetime, valueOpen, high, low: String
     let close, volume: String
@@ -38,3 +41,6 @@ struct Value: Codable {
         case high, low, close, volume
     }
 }
+
+
+

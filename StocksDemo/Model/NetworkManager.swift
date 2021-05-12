@@ -14,6 +14,8 @@ protocol NetworkStocksManagerDelegate {
 
 struct NetworkManager {
     
+    
+    
     var delgate: NetworkStocksManagerDelegate?
     
     func fetchCurrentAir( onFile: @escaping (Error) -> Void) {
@@ -36,7 +38,7 @@ struct NetworkManager {
         do {
             let currentStocksData = try decoder.decode(StocksData.self, from: data)
             guard let currentStocks = Stocks(stocksData: currentStocksData)  else {return nil}
-            print(currentStocks)
+//            print(currentStocks.valueOpen)
             return currentStocks
         } catch let error  {
             print(error.localizedDescription)
